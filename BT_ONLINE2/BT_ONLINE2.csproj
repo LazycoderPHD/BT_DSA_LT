@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <!-- Khai báo hỗ trợ cả .NET 6.0 (máy trường) và .NET 9.0 (máy nhà) -->
-    <TargetFrameworks>net6.0;net9.0</TargetFrameworks>
+    <!-- Nếu là Windows (máy trường) thì tự chọn net6.0, ngược lại (macOS ở nhà) tự chọn net9.0 -->
+    <TargetFramework Condition="'$(OS)' == 'Windows_NT'">net6.0</TargetFramework>
+    <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
